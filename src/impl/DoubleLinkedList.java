@@ -447,7 +447,7 @@ public class DoubleLinkedList implements List {
      * @param source
      * @return the source list in reverse order
      */
-    public static DoubleLinkedList reversereverse(List source) {
+    public static DoubleLinkedList reverseList(List source) {
         // the reverse reverse that is going to be generated
         DoubleLinkedList reverse = new DoubleLinkedList();
 
