@@ -549,7 +549,7 @@ public class DoubleLinkedList implements List {
         }
         return sum;
     }
-    
+
     public static int removeMin(List source) {
         // we assume that the last element is the smallest
         int min = (Integer) source.getLast();
@@ -572,12 +572,12 @@ public class DoubleLinkedList implements List {
                 min = (Integer) obj;
 
         }
-        
+
         removeElement(source, min);
-        
+
         return min;
     }
-    
+
     public static boolean removeElement(List source, int element) {
         int s = source.size();
         boolean found = false;
@@ -588,7 +588,6 @@ public class DoubleLinkedList implements List {
             // insert the above data to the beggining of the source unique
             // after s iterations the unique is going to transform to it's
             // original form.
-            
 
             // assuming that the 1st element from the end of the list
             // is the last element
@@ -598,7 +597,60 @@ public class DoubleLinkedList implements List {
             }
 
         }
-        
+
         return found;
+    }
+
+    public static int findMax(List source) {
+        // we assume that the last element is the smallest
+        int max = (Integer) source.getLast();
+
+        // get the size of source
+        int s = source.size();
+
+        // check if s is grater that zero and after substract it by 1
+        while (s-- > 0) {
+            // remove the last node
+            Object obj = source.removeLast();
+            // insert the above data to the beggining of the source unique
+            // after s iterations the unique is going to transform to it's
+            // original form.
+            source.insertFirst(obj);
+
+            if (max < (Integer) obj)
+                max = (Integer) obj;
+        }
+
+        return max;
+    }
+
+    public static List removeMax(List source) {
+        List list = new DoubleLinkedList();
+
+        try {
+            int max = findMax(source);
+            int s = source.size();
+
+            // check if s is grater that zero and after substract it by 1
+            while (s-- > 0) {
+                // remove the last node
+                System.out.println("Haha");
+                Object obj = source.removeLast();
+                System.out.println("Hoho");
+                // insert the above data to the beggining of the source unique
+                // after s iterations the unique is going to transform to it's
+                // original form.
+                source.insertFirst(obj);
+
+                if (max != (Integer) obj)
+                    list.insertFirst(obj);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return list;
     }
 }

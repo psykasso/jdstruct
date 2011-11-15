@@ -16,6 +16,16 @@ public class SimpleLinkedList implements List {
 		lastNode = null;
 		counter = 0;
 	}
+	
+	public SimpleLinkedList(Object[] inArray) {
+	    firstNode = null;
+        lastNode = null;
+        counter = 0;
+        
+        for (Object obj : inArray) {
+            insertLast(obj);
+        }
+	}
 
 	public boolean isEmpty() {
 		return  (size()==0);
@@ -38,6 +48,17 @@ public class SimpleLinkedList implements List {
 		}
 		return c;
 	*/
+	}
+	
+	public int recursiveSize() {
+	   return recursiveS(firstNode);
+	}
+	
+	private int recursiveS(ListNode node) {
+	    if(node == null)
+	        return 0;
+	    else
+	        return 1 + recursiveS(node.getNextNode());
 	}
 
 	public boolean contains(Object obj) {
@@ -205,7 +226,7 @@ public class SimpleLinkedList implements List {
 			tempNode = tempNode.getNextNode();
 		}
 
-		return result+" ]<--> End";
+		return result+"]<--> End";
 	}
 
 	// PRIVATE INSTANCE FIELDS *************************************************
